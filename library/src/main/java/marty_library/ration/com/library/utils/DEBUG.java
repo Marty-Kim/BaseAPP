@@ -1,4 +1,4 @@
-package soft.neunge.com.library.utils;
+package marty_library.ration.com.library.utils;
 
 import android.util.Log;
 

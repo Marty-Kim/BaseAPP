@@ -1,4 +1,4 @@
-package marty.ration.com.baseapp.utils;
+package marty_library.ration.com.library.utils;
 
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;

@@ -1,4 +1,4 @@
-package soft.neunge.com.library;
+package marty_library.ration.com.library;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

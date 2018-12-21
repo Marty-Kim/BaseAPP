@@ -1,4 +1,4 @@
-package soft.neunge.com.library;
+package marty_library.ration.com.library;
 
 import org.junit.Test;
 
