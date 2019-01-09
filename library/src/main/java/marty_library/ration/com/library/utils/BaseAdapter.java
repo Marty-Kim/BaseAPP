@@ -8,7 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * User: Marty
@@ -62,14 +61,12 @@ public abstract class BaseAdapter<T,S extends BaseVH> extends RecyclerView.Adapt
     }
 
     @Override
-    public void onBindViewHolder(@NonNull final S holder, final int position, @NonNull List<Object> payloads) {
-        super.onBindViewHolder(holder, position, payloads);
-
+    public void onBindViewHolder(@NonNull final S s,final int i) {
         if (onItemClickListener != null){
-            holder.itemView.setOnClickListener(new View.OnClickListener() {
+            s.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    onItemClickListener.onItemClick(holder.itemView,arrayList.get(position));
+                    onItemClickListener.onItemClick(s.itemView,arrayList.get(i));
                 }
             });
         }
