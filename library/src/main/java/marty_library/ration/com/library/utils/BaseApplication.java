@@ -5,13 +5,13 @@ import android.app.Application;
 /**
  * Created by Charny on 2018-12-04.
  */
-public class MAPP extends Application {
+public class BaseApplication extends Application {
 
 
-    private static MAPP RAPP;
+    private static BaseApplication RAPP;
 
 
-    public static MAPP getRAPP() {
+    public static BaseApplication getRAPP() {
         return RAPP;
     }
 

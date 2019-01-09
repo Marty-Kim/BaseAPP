@@ -5,7 +5,7 @@ import android.util.Log;
 /**
  * Created by Charny on 2018-12-04.
  */
-public class DEBUG {
+public class MDEBUG {
 
     public static void debug(String msg){
         Log.d("<Marty>",msg);

@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * User: Marty
@@ -22,6 +23,8 @@ public abstract class BaseAdapter<T,S extends BaseVH> extends RecyclerView.Adapt
     private LayoutInflater mInflater;
     private Integer mLayout;
 
+    OnItemClickListener<T> onItemClickListener;
+
     public BaseAdapter(Context mCon , Integer mLayout) {
         this.mCon = mCon;
         this.mLayout = mLayout;
@@ -35,6 +38,10 @@ public abstract class BaseAdapter<T,S extends BaseVH> extends RecyclerView.Adapt
     public void setList(ArrayList<T> t){
         arrayList = t;
         notifyDataSetChanged();
+    }
+
+    public void setOnItemClickListener(OnItemClickListener<T> onItemClickListener) {
+        this.onItemClickListener = onItemClickListener;
     }
 
     public void addList(ArrayList<T> t){
@@ -54,6 +61,19 @@ public abstract class BaseAdapter<T,S extends BaseVH> extends RecyclerView.Adapt
 
     }
 
+    @Override
+    public void onBindViewHolder(@NonNull final S holder, final int position, @NonNull List<Object> payloads) {
+        super.onBindViewHolder(holder, position, payloads);
+
+        if (onItemClickListener != null){
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    onItemClickListener.onItemClick(holder.itemView,arrayList.get(position));
+                }
+            });
+        }
+    }
 
     @NonNull
     @Override
