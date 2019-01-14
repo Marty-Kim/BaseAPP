@@ -84,4 +84,7 @@ public abstract class BaseAdapter<T,S extends BaseVH> extends RecyclerView.Adapt
     public int getItemCount() {
         return arrayList.size();
     }
+
+
+
 }
