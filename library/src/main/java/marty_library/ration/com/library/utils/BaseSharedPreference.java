@@ -1,19 +1,26 @@
 package marty_library.ration.com.library.utils;
 
+import android.content.Context;
 import android.content.SharedPreferences;
 
 /**
  * Created by Charny on 2019-01-15.
  */
 public abstract class BaseSharedPreference {
+    Context mCon;
     final String stringdefault = "";
     final int intdefault = -1;
     final float floatdefault = -1.0f;
     final boolean booleandefault = false;
 
-    public static SharedPreferences sharedPreferences;
+    public BaseSharedPreference(Context context) {
+        mCon = context;
+        setSharedPreferences(mCon);
+    }
 
-    public abstract void setSharedPreferences();
+    public SharedPreferences sharedPreferences;
+
+    public abstract SharedPreferences setSharedPreferences(Context mCon);
 
     public String getStringFromShared(String key){
         return sharedPreferences.getString(key,stringdefault);
