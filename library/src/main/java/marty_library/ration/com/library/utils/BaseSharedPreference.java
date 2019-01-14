@@ -20,7 +20,7 @@ public abstract class BaseSharedPreference {
 
     public SharedPreferences sharedPreferences;
 
-    public abstract SharedPreferences setSharedPreferences(Context mCon);
+    public abstract void setSharedPreferences(Context mCon);
 
     public String getStringFromShared(String key){
         return sharedPreferences.getString(key,stringdefault);
