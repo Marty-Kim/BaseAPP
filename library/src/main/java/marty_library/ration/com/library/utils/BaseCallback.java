@@ -68,7 +68,7 @@ public class BaseCallback<T> implements Callback<T> {
     public void onFailure(Call<T> call, Throwable t) {
         if (martyCallWithFailure != null)
             martyCallWithFailure.onFailure(call, t);
-        MDEBUG.debug(t.toString());
+        BDEBUG.debug(t.toString());
         Toast.makeText(baseView, failAlertText == NO_VALUE ? "다시 시도해주세요." : baseView.getString(failAlertText), Toast.LENGTH_SHORT).show();
     }
 }

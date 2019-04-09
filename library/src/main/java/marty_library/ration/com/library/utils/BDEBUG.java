@@ -5,7 +5,7 @@ import android.util.Log;
 /**
  * Created by Charny on 2018-12-04.
  */
-public class MDEBUG {
+public class BDEBUG {
 
     public static void debug(String msg){
         Log.d("<Marty>",buildLogMsg(msg));
