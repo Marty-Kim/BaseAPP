@@ -7,6 +7,7 @@ import android.content.pm.PackageManager;
 import android.content.pm.Signature;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
+import android.os.Handler;
 import android.support.design.widget.Snackbar;
 import android.text.Html;
 import android.text.SpannableString;
@@ -79,6 +80,10 @@ public class BaseUtils {
                 return false;
         }
         return true;
+    }
+
+    public void postRunnable(Runnable r , long millis){
+        new Handler().postDelayed(r,millis);
     }
 
 
