@@ -2,6 +2,7 @@ package marty_library.ration.com.library.utils;
 
 import android.annotation.TargetApi;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
@@ -42,7 +43,11 @@ import static marty_library.ration.com.library.utils.PROPERTY.VALIDATE_PW;
 public class BaseUtils {
 
     public String pw_regex = "^[A-Za-z0-9]{6,16}\\$";
+    private Context mCon;
 
+    public BaseUtils(Context mCon) {
+        this.mCon = mCon;
+    }
 
     public void getAppKeyHash(Context context) {
         try {
@@ -173,5 +178,11 @@ public class BaseUtils {
 
         return context.getResources().getColor(resourceId);
     }
+
+    public int convertDipToPixels(Context mCon ,float dp)
+    {
+        return (int) (dp * mCon.getResources().getDisplayMetrics().density + 0.5f);
+    }
+
 
 }
