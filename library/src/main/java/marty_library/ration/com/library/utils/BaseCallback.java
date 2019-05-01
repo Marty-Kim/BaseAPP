@@ -1,7 +1,7 @@
 package marty_library.ration.com.library.utils;
 
+import android.app.Activity;
 import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
 import retrofit2.Call;
@@ -13,7 +13,7 @@ import retrofit2.Response;
  */
 public class BaseCallback<T> implements Callback<T> {
 
-    private final int NO_VALUE = -1;
+    private final String NO_VALUE = "";
     public interface MartyCall<T> {
         void onResponse(Call<T> call, Response<T> response);
     }
@@ -25,32 +25,47 @@ public class BaseCallback<T> implements Callback<T> {
 
     private MartyCall<T> martyCall;
     private MartyCallWithFailure<T> martyCallWithFailure;
-    private AppCompatActivity baseView;
-    private int failAlertText;
+    private Activity baseView;
+    private String failAlertText;
 
-    public BaseCallback(AppCompatActivity baseView, MartyCall<T> rationCall) {
+    public BaseCallback(Activity baseView, MartyCall<T> rationCall) {
         this.martyCall = rationCall;
         this.baseView = baseView;
         this.failAlertText = NO_VALUE;
     }
 
-    public BaseCallback(AppCompatActivity baseView, MartyCall<T> rationCall, int failAlertText) {
+    public BaseCallback(Activity baseView, MartyCall<T> rationCall, int failAlertText) {
         this.martyCall = rationCall;
         this.baseView = baseView;
-        this.failAlertText = failAlertText;
+        this.failAlertText = baseView.getResources().getString(failAlertText);
+
     }
 
-    public BaseCallback(AppCompatActivity baseView, MartyCallWithFailure<T> rationCall) {
+    public BaseCallback(Activity baseView, MartyCallWithFailure<T> rationCall) {
         this.martyCallWithFailure = rationCall;
         this.baseView = baseView;
         this.failAlertText = NO_VALUE;
     }
 
-    public BaseCallback(AppCompatActivity baseView, MartyCallWithFailure<T> rationCall, int failAlertText) {
+    public BaseCallback(Activity baseView, MartyCallWithFailure<T> rationCall, int failAlertText) {
+        this.martyCallWithFailure = rationCall;
+        this.baseView = baseView;
+        this.failAlertText = baseView.getResources().getString(failAlertText);
+    }
+
+    public BaseCallback(Activity baseView, MartyCall<T> rationCall, String failAlertText) {
+        this.martyCall = rationCall;
+        this.baseView = baseView;
+        this.failAlertText = failAlertText;
+    }
+
+
+    public BaseCallback(Activity baseView, MartyCallWithFailure<T> rationCall, String failAlertText) {
         this.martyCallWithFailure = rationCall;
         this.baseView = baseView;
         this.failAlertText = failAlertText;
     }
+
 
     @Override
     public void onResponse(Call<T> call, Response<T> response) {
@@ -69,6 +84,6 @@ public class BaseCallback<T> implements Callback<T> {
         if (martyCallWithFailure != null)
             martyCallWithFailure.onFailure(call, t);
         BDEBUG.debug(t.toString());
-        Toast.makeText(baseView, failAlertText == NO_VALUE ? "다시 시도해주세요." : baseView.getString(failAlertText), Toast.LENGTH_SHORT).show();
+        Toast.makeText(baseView, failAlertText.equals( NO_VALUE )  ? "다시 시도해주세요." :failAlertText, Toast.LENGTH_SHORT).show();
     }
 }
