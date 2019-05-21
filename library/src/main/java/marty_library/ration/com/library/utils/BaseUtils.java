@@ -78,7 +78,9 @@ public class BaseUtils {
     public boolean isPw(String msg){
         return Pattern.matches(pw_regex,msg);
     }
-
+    public boolean isPw(String regex , String msg){
+        return Pattern.matches(regex,msg);
+    }
     public boolean isValidateChecks(CheckBox[] checkBoxes){
         for (CheckBox box : checkBoxes){
             if (!box.isChecked())
@@ -136,6 +138,18 @@ public class BaseUtils {
     public String MoneyFomatter(String msg){
         Format format = new DecimalFormat("###,###");
         return format.format(msg);
+    }
+    public String MoneyFomatter(int msg){
+        return String.format("%,d",msg);
+    }
+
+    public int moneyToInt(String money_str){
+
+        try {
+            return Integer.parseInt(money_str.replaceAll(",", ""));
+        }catch (Exception e){
+            return 0;
+        }
     }
     public Spanned fromHtml(String html) {
 
