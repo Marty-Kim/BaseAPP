@@ -60,6 +60,8 @@ public abstract class BaseAdapter<T,S extends BaseVH> extends RecyclerView.Adapt
 
     }
 
+    public abstract void onLastItem(T t);
+
     @Override
     public void onBindViewHolder(@NonNull final S s,final int i) {
         s.bind(arrayList.get(i),getmCon());
@@ -70,6 +72,9 @@ public abstract class BaseAdapter<T,S extends BaseVH> extends RecyclerView.Adapt
                     onItemClickListener.onItemClick(s.itemView,arrayList.get(i));
                 }
             });
+        }
+        if (i == arrayList.size() -1){
+            onLastItem(arrayList.get(i));
         }
     }
 
@@ -85,6 +90,7 @@ public abstract class BaseAdapter<T,S extends BaseVH> extends RecyclerView.Adapt
     public int getItemCount() {
         return arrayList.size();
     }
+
 
 
 

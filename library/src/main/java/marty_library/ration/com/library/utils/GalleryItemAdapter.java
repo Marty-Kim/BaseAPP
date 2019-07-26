@@ -105,7 +105,6 @@ public class GalleryItemAdapter extends RecyclerView.Adapter<GalleryItemAdapter.
                         //picturesSelectedMap.remove(picture);
 
                         picturesSelected.remove(picture);
-                        //cập nhật lại vị trí
                         for (Picture pictureUpdate : pictures) {
                             if (pictureUpdate.getSelectCount() > picture.getSelectCount()) {
                                 pictureUpdate.setSelectCount(pictureUpdate.getSelectCount() - 1);

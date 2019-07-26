@@ -25,10 +25,12 @@ import java.util.List;
 public class BaseActivity extends AppCompatActivity {
     protected Context mCon;
 
+    public BaseUtils util;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mCon = this;
+        util = new BaseUtils(this);
     }
     public void showToast(String message) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
@@ -61,6 +63,7 @@ public class BaseActivity extends AppCompatActivity {
     }
 
 
+    @TargetApi(21)
     public void setStatusBar(int color){
         Window window = getWindow();
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
@@ -106,12 +109,36 @@ public class BaseActivity extends AppCompatActivity {
         imm.showSoftInput(view,0);
     }
     public void clearTaskandgo(Class to){
+        clearTaskandgo(to,null);
+    }
+    public void clearTaskandgo(Class to,Bundle extra){
+
         Intent inte = new Intent(this, to);
         inte.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
         inte.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         inte.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        if (extra != null)
+            inte.putExtras(extra);
         startActivity(inte);
         finish();
+    }
+    public void moveActivity(Class to){
+        moveActivity(to,null,false);
+    }
+    public void moveActivity(Class to,boolean isfinish){
+        moveActivity(to,null,isfinish);
+    }
+    public void moveActivity(Class to,Bundle extra){
+        moveActivity(to,extra,false);
+    }
+    public void moveActivity(Class to,Bundle extra,boolean isfinish){
+
+        Intent inte = new Intent(this, to);
+        if (extra != null)
+            inte.putExtras(extra);
+        startActivity(inte);
+        if (isfinish)
+            finish();
     }
 
 }

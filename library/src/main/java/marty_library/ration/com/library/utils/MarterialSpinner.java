@@ -19,9 +19,7 @@ public class MarterialSpinner extends View {
         super(context, attrs, defStyleAttr);
     }
 
-    public MarterialSpinner(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
-        super(context, attrs, defStyleAttr, defStyleRes);
-    }
+
 
 
 
