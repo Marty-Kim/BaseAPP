@@ -61,8 +61,14 @@ public abstract class BaseAdapter<T,S extends BaseVH> extends RecyclerView.Adapt
     }
 
     public void onLastItem(T t){
-        
+
     };
+
+    public void onFirstItem(T t){
+
+    };
+
+
 
     @Override
     public void onBindViewHolder(@NonNull final S s,final int i) {
@@ -77,6 +83,8 @@ public abstract class BaseAdapter<T,S extends BaseVH> extends RecyclerView.Adapt
         }
         if (i == arrayList.size() -1){
             onLastItem(arrayList.get(i));
+        }else if ( i == 0){
+            onFirstItem(arrayList.get(i));
         }
     }
 
