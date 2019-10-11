@@ -14,6 +14,7 @@ import retrofit2.Response;
 public class BaseCallback<T> implements Callback<T> {
 
     private final String NO_VALUE = "";
+    private final String NO_FAIL_TOAST = "NO_FAIL_TOAST";
     public interface MartyCall<T> {
         void onResponse(Call<T> call, Response<T> response);
     }
@@ -25,8 +26,11 @@ public class BaseCallback<T> implements Callback<T> {
 
     private MartyCall<T> martyCall;
     private MartyCallWithFailure<T> martyCallWithFailure;
-    private Activity baseView;
+    protected Activity baseView;
     private String failAlertText;
+
+
+
 
     public BaseCallback(Activity baseView, MartyCall<T> rationCall) {
         this.martyCall = rationCall;
@@ -81,9 +85,12 @@ public class BaseCallback<T> implements Callback<T> {
 
     @Override
     public void onFailure(Call<T> call, Throwable t) {
-        if (martyCallWithFailure != null)
-            martyCallWithFailure.onFailure(call, t);
         BDEBUG.debug(t.toString());
-        Toast.makeText(baseView, failAlertText.equals( NO_VALUE )  ? "다시 시도해주세요." :failAlertText, Toast.LENGTH_SHORT).show();
+        if (martyCallWithFailure != null) {
+            martyCallWithFailure.onFailure(call, t);
+            return;
+        }
+        if (!failAlertText.equalsIgnoreCase(NO_FAIL_TOAST))
+            Toast.makeText(baseView, failAlertText.equals( NO_VALUE )  ? "다시 시도해주세요." :failAlertText, Toast.LENGTH_SHORT).show();
     }
 }

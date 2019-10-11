@@ -21,14 +21,16 @@ import marty_library.ration.com.library.utils.PROPERTY.INTENT_REQ_PICK_FROM_ALBU
 
 class CameraUtils {
     companion object {
-
+// todo Camera Capture Image Add
+        // onActivityResult Callback Init
         var APP_NAME : String? = null
         /**
          *  갤러리 호출
          */
         fun goToAlbum(activity: Activity) {
-            val intent = Intent(Intent.ACTION_PICK)
+            val intent = Intent(Intent.ACTION_GET_CONTENT)
             intent.type = "image/*"
+//            intent.setPackage("");
             if (intent.resolveActivity(activity.packageManager) != null) {
                 activity.startActivityForResult(intent, INTENT_REQ_PICK_FROM_ALBUM)
             }
@@ -72,9 +74,10 @@ class CameraUtils {
          *  실제 이미지 경로 반환
          */
         fun getImagePath(context: Context, uri: Uri?): String{
-            val cursor = MediaStore.Images.Media.query(context.contentResolver, uri, null)
-            cursor.moveToFirst()
-            return cursor.getString(cursor.getColumnIndex(MediaStore.Images.Media.DATA))
+//            val cursor = MediaStore.Images.Media.query(context.contentResolver, uri, null)
+//            cursor.moveToFirst()
+//            return cursor.getString(cursor.getColumnIndex(MediaStore.Images.Media.DATA))
+            return RealPathUtil.getRealPath(context,uri)
         }
 
         /**

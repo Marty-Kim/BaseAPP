@@ -43,7 +43,7 @@ import static marty_library.ration.com.library.utils.PROPERTY.VALIDATE_PW;
 public class BaseUtils {
 
     public String pw_regex = "^[A-Za-z0-9]{6,16}\\$";
-    private Context mCon;
+    protected  Context mCon;
 
     public BaseUtils(Context mCon) {
         this.mCon = mCon;
@@ -136,7 +136,7 @@ public class BaseUtils {
 
     // Format ###,###
     public String MoneyFomatter(String msg){
-        Format format = new DecimalFormat("###,###");
+        Format format = new DecimalFormat("###,###,###");
         return format.format(msg);
     }
     public String MoneyFomatter(int msg){

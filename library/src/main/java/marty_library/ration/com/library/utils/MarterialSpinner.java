@@ -19,7 +19,7 @@ public class MarterialSpinner extends View {
         super(context, attrs, defStyleAttr);
     }
 
-
+    // todo Spinner 작업예정
 
 
 

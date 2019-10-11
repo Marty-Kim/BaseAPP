@@ -6,7 +6,7 @@ import com.gun0912.tedpermission.PermissionListener;
 import com.gun0912.tedpermission.TedPermission;
 
 
-public class Ted {
+public class  Ted {
 
     public static String REJECTED_MSG = "If you reject permission,you can not use this service\n\nPlease turn on permissions at [Setting] > [Permission]";
     public static void permissionReq(Context activity, PermissionListener listener, String[] permissions){
