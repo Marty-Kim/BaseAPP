@@ -81,7 +81,7 @@ public class RealPathUtil {
                 final String docId = DocumentsContract.getDocumentId(uri);
                 final String[] split = docId.split(":");
                 final String type = split[0];
-
+                MDEBUG.debug("isExternalStorageDocument");
                 if ("primary".equalsIgnoreCase(type)) {
                     return Environment.getExternalStorageDirectory() + "/" + split[1];
                 }
@@ -90,6 +90,7 @@ public class RealPathUtil {
             // DownloadsProvider
             else if (isDownloadsDocument(uri)) {
                 final String id = DocumentsContract.getDocumentId(uri);
+                MDEBUG.debug("isDownloadsDocument");
 
                 if (id != null && id.startsWith("raw:")) {
                     return id.substring(4);
@@ -126,6 +127,7 @@ public class RealPathUtil {
             }
             // MediaProvider
             else if (isMediaDocument(uri)) {
+                MDEBUG.debug("isMediaDocument");
                 final String docId = DocumentsContract.getDocumentId(uri);
                 final String[] split = docId.split(":");
                 final String type = split[0];
@@ -148,13 +150,17 @@ public class RealPathUtil {
             }
         }
         else if ("content".equalsIgnoreCase(uri.getScheme())) {
-            if (isGooglePhotosUri(uri))
+            if (isGooglePhotosUri(uri)) {
+                MDEBUG.debug("isGooglePhotosUri");
                 return uri.getLastPathSegment();
+            }
+            MDEBUG.debug("content.equalsIgnoreCase(uri.getScheme()");
 
             return getDataColumn(context, uri, null, null);
         }
         // File
         else if ("file".equalsIgnoreCase(uri.getScheme())) {
+            MDEBUG.debug("file.equalsIgnoreCase(uri.getScheme()");
             return uri.getPath();
         }
 
