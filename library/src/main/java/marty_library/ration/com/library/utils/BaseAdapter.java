@@ -60,7 +60,9 @@ public abstract class BaseAdapter<T,S extends BaseVH> extends RecyclerView.Adapt
 
     }
 
-    public abstract void onLastItem(T t);
+    public void onLastItem(T t){
+        
+    };
 
     @Override
     public void onBindViewHolder(@NonNull final S s,final int i) {
