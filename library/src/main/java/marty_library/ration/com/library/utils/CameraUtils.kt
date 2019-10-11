@@ -28,7 +28,7 @@ class CameraUtils {
          *  갤러리 호출
          */
         fun goToAlbum(activity: Activity) {
-            val intent = Intent(Intent.ACTION_GET_CONTENT)
+            val intent = Intent(Intent.ACTION_PICK)
             intent.type = "image/*"
 //            intent.setPackage("");
             if (intent.resolveActivity(activity.packageManager) != null) {
