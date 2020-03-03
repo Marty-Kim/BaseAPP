@@ -22,6 +22,8 @@ import android.widget.CheckBox;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
+
 import java.security.Key;
 import java.security.MessageDigest;
 import java.text.DecimalFormat;

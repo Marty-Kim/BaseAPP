@@ -37,7 +37,9 @@ public class RetrofitClient {
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .client(getclient( ))
                 .build();
+
     }
+
 
 
 
@@ -46,3 +48,4 @@ public class RetrofitClient {
         return retro;
     }
 }
+

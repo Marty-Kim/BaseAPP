@@ -29,7 +29,7 @@ public class BaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mCon = this;
+        mCon = this.getBaseContext();
         util = new BaseUtils(this);
     }
     public void showToast(String message) {
@@ -64,7 +64,9 @@ public class BaseActivity extends AppCompatActivity {
 
 
     @TargetApi(21)
-    public void setStatusBar(int color){
+    public void setStatusBar(int color) throws Exception{
+        if (Build.VERSION.SDK_INT < 21)
+            throw new Exception("Low Api");
         Window window = getWindow();
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
@@ -101,6 +103,7 @@ public class BaseActivity extends AppCompatActivity {
     }
     public void hideKeyboard(View view){
         InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+
         imm.hideSoftInputFromWindow(view.getWindowToken(),0);
     }
 
