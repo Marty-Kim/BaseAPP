@@ -15,7 +15,7 @@ public abstract  class OnItemClickListener<T> {
 
     private long mLastClickTime;
 
-    abstract  void onItemClick(View v,T t);
+    public abstract  void onItemClick(View v,T t);
     public final void onClick(View v ,T t) {
         long currentClickTime= SystemClock.uptimeMillis();
         long elapsedTime=currentClickTime-mLastClickTime;
