@@ -95,7 +95,7 @@ public class BaseCallback<T> implements Callback<T> {
                 try {
                     Toast.makeText(baseView, failAlertText.equals(NO_VALUE) ? "다시 시도해주세요." : failAlertText, Toast.LENGTH_SHORT).show();
                 }catch (Exception e){
-                    
+
                 }
             }
     }
