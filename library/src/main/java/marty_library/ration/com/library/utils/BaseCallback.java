@@ -93,7 +93,7 @@ public class BaseCallback<T> implements Callback<T> {
         if (!failAlertText.equalsIgnoreCase(NO_FAIL_TOAST))
             if (baseView != null) {
                 try {
-                    Toast.makeText(baseView, failAlertText.equals(NO_VALUE) ? "다시 시도해주세요." : failAlertText, Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(baseView, failAlertText.equals(NO_VALUE) ? "다시 시도해주세요." : failAlertText, Toast.LENGTH_SHORT).show();
                 }catch (Exception e){
 
                 }
