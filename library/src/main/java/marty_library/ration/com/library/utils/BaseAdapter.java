@@ -1,5 +1,6 @@
 package marty_library.ration.com.library.utils;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -71,15 +72,17 @@ public abstract class BaseAdapter<T,S extends BaseVH> extends RecyclerView.Adapt
 
 
     @Override
-    public void onBindViewHolder(@NonNull final S s,final int i) {
+    public void onBindViewHolder(@NonNull final S s, @SuppressLint("RecyclerView") final int i) {
         s.bind(arrayList.get(i),getmCon());
         if (onItemClickListener != null){
-            s.itemView.setOnClickListener(new View.OnClickListener() {
+            s.itemView.setOnClickListener(new OnSingleClickListener() {
                 @Override
-                public void onClick(View v) {
-                    onItemClickListener.onItemClick(s.itemView,arrayList.get(i));
+                public void onSingleClick(View v) {
+                    onItemClickListener.onItemClick(s.itemView, arrayList.get(i));
+
                 }
             });
+
         }
         if (i == arrayList.size() -1){
             onLastItem(arrayList.get(i));
