@@ -125,6 +125,7 @@ public class RealPathUtil {
                 return destinationPath;
 
             }
+
             // MediaProvider
             else if (isMediaDocument(uri)) {
                 MDEBUG.debug("isMediaDocument");
@@ -196,20 +197,16 @@ public class RealPathUtil {
     public static boolean isExternalStorageDocument(Uri uri) {
         return "com.android.externalstorage.documents".equals(uri.getAuthority());
     }
-
-
     public static boolean isDownloadsDocument(Uri uri) {
         return "com.android.providers.downloads.documents".equals(uri.getAuthority());
     }
-
-
     public static boolean isMediaDocument(Uri uri) {
         return "com.android.providers.media.documents".equals(uri.getAuthority());
     }
-
     public static boolean isGooglePhotosUri(Uri uri) {
         return "com.google.android.apps.photos.content".equals(uri.getAuthority());
     }
+
     public static String getFileName(@NonNull Context context, Uri uri) {
         String mimeType = context.getContentResolver().getType(uri);
         String filename = null;
@@ -231,7 +228,6 @@ public class RealPathUtil {
                 returnCursor.close();
             }
         }
-
         return filename;
     }
 
