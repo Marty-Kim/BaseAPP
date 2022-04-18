@@ -20,4 +20,4 @@
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
 
--keep class marty_library.ration.com.library.utils.*
+#-keep class marty_library.ration.com.library.utils.*
