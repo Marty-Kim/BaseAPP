@@ -7,16 +7,29 @@ import android.util.Log;
  */
 public class MDEBUG {
 
+    private static String TAG = "<MARTY>";
+    private static boolean ISDebug = false;
+
+    public static void setISDebug(boolean ISDebug) {
+        MDEBUG.ISDebug = ISDebug;
+    }
+    public static void setTAG(String TAG) {
+        MDEBUG.TAG = TAG;
+    }
+
     public static void debug(String msg){
-        Log.d("<Marty>",buildLogMsg(msg));
+        if (ISDebug)
+            Log.d(TAG,buildLogMsg(msg));
 
     }
     public static void debug(double msg){
-        Log.d("<Marty>",buildLogMsg(msg + ""));
+        if (ISDebug)
+            Log.d(TAG,buildLogMsg(msg + ""));
 
     }
     public static void debug(int msg){
-        Log.d("<Marty>",buildLogMsg(msg + ""));
+        if (ISDebug)
+            Log.d(TAG,buildLogMsg(msg + ""));
     }
     public static String buildLogMsg(String message) {
 
@@ -25,7 +38,7 @@ public class MDEBUG {
         StringBuilder sb = new StringBuilder();
 
         sb.append("[");
-        sb.append(ste.getFileName().replace(".java", ""));
+//        sb.append(ste.getFileName().replace(".java", ""));
         sb.append("::");
         sb.append(ste.getMethodName());
         sb.append("]");

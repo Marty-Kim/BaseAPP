@@ -25,7 +25,7 @@ public class BDEBUG {
         StringBuilder sb = new StringBuilder();
 
         sb.append("[");
-        sb.append(ste.getFileName().replace(".java", ""));
+//        sb.append(ste.getFileName().replace(".java", ""));
         sb.append("::");
         sb.append(ste.getMethodName());
         sb.append("]");
